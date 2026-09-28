@@ -27,6 +27,7 @@ import { QueuePanel } from './components/QueuePanel';
 import { NowPlayingModal } from './components/NowPlayingModal';
 import { ShortcutsModal } from './components/ShortcutsModal';
 import { BackgroundVisualizer } from './components/BackgroundVisualizer';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { Heart, Play, FolderPlus } from 'lucide-react';
 
 export default function App() {
@@ -93,86 +94,8 @@ export default function App() {
     return processedTracks;
   }, [processedTracks, playbackState.currentTrack]);
 
-  // Global Keyboard Shortcuts (Space, N, P, M, S, R, Arrows, Q, ?, Esc)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === 'INPUT' ||
-        target.tagName === 'TEXTAREA' ||
-        target.tagName === 'SELECT' ||
-        target.isContentEditable
-      ) {
-        return;
-      }
-
-      switch (e.code) {
-        case 'Space':
-          e.preventDefault();
-          togglePlay();
-          break;
-        case 'KeyN':
-          if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            e.preventDefault();
-            playNext();
-          }
-          break;
-        case 'KeyP':
-          if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            e.preventDefault();
-            playPrevious();
-          }
-          break;
-        case 'KeyM':
-          if (!e.ctrlKey && !e.metaKey) {
-            e.preventDefault();
-            toggleMute();
-          }
-          break;
-        case 'KeyS':
-          if (!e.ctrlKey && !e.metaKey) {
-            e.preventDefault();
-            toggleShuffle();
-          }
-          break;
-        case 'KeyR':
-          if (!e.ctrlKey && !e.metaKey) {
-            e.preventDefault();
-            toggleRepeat();
-          }
-          break;
-        case 'KeyQ':
-          if (!e.ctrlKey && !e.metaKey) {
-            e.preventDefault();
-            setIsQueueOpen((prev) => !prev);
-          }
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          seekRelative(5);
-          break;
-        case 'ArrowLeft':
-          e.preventDefault();
-          seekRelative(-5);
-          break;
-        case 'Escape':
-          setIsQueueOpen(false);
-          setIsNowPlayingOpen(false);
-          setIsShortcutsOpen(false);
-          break;
-        case 'Slash':
-          if (e.shiftKey) {
-            // '?' key
-            e.preventDefault();
-            setIsShortcutsOpen((prev) => !prev);
-          }
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [
+  // Initialize Global Keyboard Shortcuts
+  useKeyboardShortcuts({
     togglePlay,
     playNext,
     playPrevious,
@@ -180,10 +103,14 @@ export default function App() {
     toggleShuffle,
     toggleRepeat,
     seekRelative,
-    setIsQueueOpen,
-    setIsNowPlayingOpen,
-    setIsShortcutsOpen,
-  ]);
+    toggleQueue: () => setIsQueueOpen((prev) => !prev),
+    toggleShortcuts: () => setIsShortcutsOpen((prev) => !prev),
+    closeModals: () => {
+      setIsQueueOpen(false);
+      setIsNowPlayingOpen(false);
+      setIsShortcutsOpen(false);
+    },
+  });
 
   const [isDragging, setIsDragging] = React.useState(false);
 
