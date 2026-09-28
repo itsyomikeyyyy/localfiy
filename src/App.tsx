@@ -1,8 +1,15 @@
 /**
- * @license
- * SPDX-License-Identifier: Apache-2.0
+ * 🎨 THE MAIN APP LAYOUT 🎨
+ * 
+ * Welcome to App.tsx! This is where the magic happens visually. ✨
+ * 
+ * If the `useLocalify` hook is the "Brain" of the app, this file is the "Body".
+ * It takes all the data (like the list of songs, the current playing track) and 
+ * passes it down to the UI components (like the Sidebar, Header, and PlayerBar).
+ * 
+ * Notice how it looks like a giant HTML sandwich? That's called JSX! It lets us 
+ * write HTML directly inside JavaScript. Super cool, right? 😎
  */
-
 import React, { useEffect, useMemo } from 'react';
 import { useLocalify } from './hooks/useLocalify';
 import { Sidebar } from './components/Sidebar';

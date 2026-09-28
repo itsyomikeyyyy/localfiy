@@ -1,3 +1,20 @@
+/**
+ * 🚀 WELCOME TO THE LOCALIFY ENGINE! 🚀
+ * 
+ * Hey there! 👋 If you're new to coding, don't let this big file scare you. 
+ * Think of this file as the "Brain" or the "Engine" of the app. 
+ * 
+ * In React, a "Hook" (like this `useLocalify` function) is just a way to share 
+ * logic and data (like the current playing song, the queue, etc.) across 
+ * different screens (like the sidebar, the player bar, the main screen).
+ * 
+ * What does this file do?
+ * 1. 📂 It talks to your computer to read folders and find music files.
+ * 2. 🎵 It keeps track of the current song playing (we call this "State").
+ * 3. 💾 It saves your preferences (like volume, shuffle) to your browser's database.
+ * 
+ * Feel free to explore! 💖
+ */
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import {
   Track,
