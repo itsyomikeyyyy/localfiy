@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181818" />
+      <stop offset="100%" stop-color="#121212" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1ed760" />
+      <stop offset="100%" stop-color="#1db954" />
+    </linearGradient>
+  </defs>
+  <!-- Background with Spotify-like dark squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  <rect width="504" height="504" x="4" y="4" rx="124" fill="none" stroke="#282828" stroke-width="4" />
+  
+  <!-- Stylized vinyl / sound waves -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#282828" stroke-width="4" stroke-dasharray="8 8" />
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#333333" stroke-width="3" />
+  <circle cx="256" cy="256" r="100" fill="none" stroke="#1db954" stroke-width="3" opacity="0.8" />
+  
+  <!-- Center Spotify Green Play Node -->
+  <circle cx="256" cy="256" r="64" fill="url(#greenGrad)" />
+  
+  <!-- Play & audio note symbol in crisp black & white -->
+  <path d="M242 224 L278 256 L242 288 Z" fill="#000000" />
+  <circle cx="202" cy="285" r="12" fill="#1ed760" opacity="0.9" />
+  <path d="M214 285 L214 232 C214 227 220 222 227 222 L240 222" stroke="#1ed760" stroke-width="5" fill="none" stroke-linecap="round" />
+</svg>

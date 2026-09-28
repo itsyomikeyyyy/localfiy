@@ -1,0 +1,6 @@
+{
+  "name": "Localify",
+  "description": "A beautiful desktop-first local music player for your audio and video collection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
